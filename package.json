@@ -1,7 +1,10 @@
 {
   "name": "mars-rover",
   "devDependencies": {
-    "@usebruno/cli": "^2.8.1"
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@usebruno/cli": "^2.8.1",
+    "husky": "^9.1.7"
   },
   "scripts": {
     "docker:build": "docker stop mars-rover-container || true && docker rm mars-rover-container || true && docker build -t mars-rover . --progress=plain",
@@ -9,6 +12,7 @@
     "docker:stop": "docker stop mars-rover-container",
     "docker:exec": "docker exec -it mars-rover-container /bin/sh",
     "test:smoke": "curl -s http://localhost:8080/health | jq .",
-    "test:integration": "cd api/collection/mars-rover && bru run"
+    "test:integration": "cd api/collection/mars-rover && bru run",
+    "prepare": "husky"
   }
 }
